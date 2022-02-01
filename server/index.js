@@ -41,24 +41,25 @@ app.get('/api/vid',(req,res)=>{
 //     })
 // });
 app.post('/api/upload',(req,res )=>{
-  if(req.files === null){
- return res.status(400).json({message:'No file file uploaded'})
-  }
-  const file=req.files.file
-  console.log(file)
-  if(file.mimetype == "video/quicktime" ||file.mimetype == "image/png"||file.mimetype == "image/gif" ){                           
-    file.mv('public/images/upload_images/'+file.name, function(err) {            
-      if (err){
-        return res.status(500).send(err);
-      }
-        var imgsrc = 'http://127.0.0.1:3000/videos/' + file.name
+  console.log(req.body)
+//   if(req.files === null){
+//  return res.status(400).json({message:'No file file uploaded'})
+//   }
+//   const file=req.files.file
+//   console.log(file)
+//   if(file.mimetype == "video/quicktime" ||file.mimetype == "image/png"||file.mimetype == "image/gif" ){                           
+//     file.mv('public/images/upload_images/'+file.name, function(err) {            
+//       if (err){
+//         return res.status(500).send(err);
+//       }
+//         var imgsrc = 'http://127.0.0.1:3000/videos/' + file.name
         var insertData = "INSERT INTO vid(file)VALUES(?)"
-        db.query(insertData, [imgsrc], (err, result) => {
+        db.query(insertData, [req.body.file], (err, result) => {
           if (err) throw err
              console.log("file uploaded")
           })
-   });
-  }
+//    });
+//   }
 })
 
 

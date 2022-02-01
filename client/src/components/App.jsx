@@ -1,29 +1,18 @@
 import React from "react";
-import FileUpload from './FileUpdate.jsx'
-import axios from'axios';
+import Register from "./Register.jsx";
+import LogIn from "./LogIn.jsx";
+
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state={
-      data:[]
-    };
-  }
-   componentDidMount() {
-     axios.get("/api/vid").then(res=>{console.log("res",res.data)
-     this.setState({data:res.data});}
-     )
-   }
+    constructor(props) {
+      super(props);
+    }
+
    render() {
      return (
-       <div >
-      <FileUpload/>
-       {this.state.data.map((elem)=>{return (
-              <div className="fl">
-                 <video controls><source src={elem.file} type="video/mp4"/></video>
-                   
-                   
-                    </div>
-        )})}
+       <div>
+      <Register />
+      
+      <LogIn />
        </div>
      );
    }

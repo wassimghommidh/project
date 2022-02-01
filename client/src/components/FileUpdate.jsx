@@ -6,20 +6,27 @@ const FileUpload =()=>{
  
       const [file, setFile] = useState();
       const [fileName, setFileName] = useState("");
- 
+    //   let result;
       const saveFile = (e) => {
-        setFile(e.target.files[0]);
+        setFile(e.target.value);
         setFileName(e.target.files[0].name);
       };
- 
+    //    const prevFile=async(file)=>{
+    //     var reader= new FileReader();
+    //     reader.readAsDataURL(file)
+        
+    //         result= reader.result
+        
+    //    }
+    //    prevFile(file)
       const uploadFile = async (e) => {
-        const formData =new FormData();
-        formData.append('file',file)
-        console.log(formData,'fi');
+        //   console.log(result)
+        // const formData =new FormData();
+        // formData.append('file',file)
         try {
           const res = await axios.post(
             "/api/upload",
-            formData
+            {file}
           );
           console.log(res);
         } catch (ex) {
@@ -29,7 +36,7 @@ const FileUpload =()=>{
  
       return (
         <div >
-          <input type="file" onChange={saveFile} name='image'/>
+          <input type="input" onChange={saveFile} name='image'/>
           <button onClick={uploadFile}>Upload</button>
         </div>
       );

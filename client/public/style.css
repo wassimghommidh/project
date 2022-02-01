@@ -1,6 +1,15 @@
-.fl{
-    display:flex;
-    flex: wrap;
-    width:"320";
-    height:"240" 
+body{
+  margin:10px;
+  padding:30px
+}
+
+.Registration{
+  display: flex;
+  flex-direction: column;
+
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column
 }
