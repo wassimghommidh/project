@@ -1,13 +1,12 @@
-DROP DATABASE IF EXISTS mvp;
 
-CREATE DATABASE mvp;
 
-USE mvp;
+CREATE DATABASE proj;
 
-CREATE TABLE items (
+USE proj;
+
+CREATE TABLE vid (
   id int NOT NULL AUTO_INCREMENT,
-  quantity integer NOT NULL,
-  description varchar(50) NOT NULL,
+  file varchar(350) NOT NULL,
   PRIMARY KEY (ID)
 );
 
