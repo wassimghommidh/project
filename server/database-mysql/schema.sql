@@ -1,3 +1,4 @@
+DROP DATABASE project;
 CREATE DATABASE project;
 
 USE project;
@@ -42,4 +43,4 @@ create table likes(
 
 /*  Execute this file from the command line by typing:
  *    mysql -u root -p < server/database-mysql/schema.sql
- *  to create the database and the tables.*/
+ *  to create the database and the tables.*:
