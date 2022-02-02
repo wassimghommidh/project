@@ -31,6 +31,37 @@ var login=(req,res)=>{
                 })
               .catch((err)=>{console.log(err);})
             })
-    })  
+    }) 
 }
-module.exports ={register,login} 
+var post = (req,res) =>{
+    var postsql = 'INSERT INTO posts SET ? '
+    let params = {
+        title: req.body.title,
+        image: req.body.image,
+        user_id:req.body.userid,
+    }
+    db.query(postsql, params,(err,result)=>{
+        if(err) {
+            console.log(err)
+        }else{
+            console.log(result)
+        }
+    })
+}
+var commits = (req,res)=>{
+    var commsql = 'INSERT INTO comments SET ? '
+    var params = {
+        // comments:req.body.comments,
+        des :req.body.des,
+        post :req.body.post,
+        user_id : req.body.userid
+    }
+    db.query(commsql, params,(err,result)=>{
+        if(err){
+            console.log(err)
+        }else{
+            console.log(result)
+        }
+    })
+}
+module.exports ={register,login,post,commits} 
