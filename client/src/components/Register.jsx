@@ -10,7 +10,7 @@ const Register = () => {
     const [password, setPassword] = useState("");
 
     const signing = () => {
-        axios.post('http://localhost:3000/register', {
+        axios.post('http://localhost:3000/api/register', {
             firstname:firstName,
             lastname:lastName,
             email:email,

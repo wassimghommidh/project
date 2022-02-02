@@ -7,7 +7,7 @@ const Login = () => {
     const [passwordLog, setPasswordLog] = useState("");
 
     const connect = () => {
-        axios.post('http://localhost:3000/login', {
+        axios.post('http://localhost:3000/api/login', {
             email:emailLog,
             password:passwordLog
         })
