@@ -9,7 +9,7 @@ import {BrowserRouter as Router,Routes,Route} from 'react-router-dom'
 class App extends React.Component {
   constructor(props) {
     super(props);
-    his.state = {
+    this.state = {
       userinfo:{}
     }
   }
