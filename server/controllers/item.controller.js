@@ -1,5 +1,6 @@
 const bcrypt= require('bcrypt')
 var db= require('../database-mysql/index')
+
 const register=async(req,res)=>{
 var salt=await bcrypt.genSalt()
 var pass=await bcrypt.hash(req.body.password,salt)
@@ -16,6 +17,7 @@ db.query(inssql,params,(err,result)=>{
     console.log(result)
 })
 }
+
 var login=(req,res)=>{
     var password=req.body.password
     var username=req.body.email
@@ -33,6 +35,7 @@ var login=(req,res)=>{
             })
     }) 
 }
+
 var post = (req,res) =>{
     var postsql = 'INSERT INTO posts SET ? '
     let params = {
@@ -48,22 +51,18 @@ var post = (req,res) =>{
         }
     })
 }
-var commits = (req,res)=>{
-    var commsql = 'INSERT INTO comments SET ? '
-    var params = {
-        // comments:req.body.comments,
-        des :req.body.des,
-        post :req.body.post,
-        user_id : req.body.userid
-    }
-    db.query(commsql, params,(err,result)=>{
-        if(err){
+
+var postget = (req,res) =>{
+    var postgetsql = 'SELECT * FROM posts  '
+    db.query(postgetsql,(err,result)=>{
+        if(err) {
             console.log(err)
         }else{
             console.log(result)
         }
     })
 }
+
 var deleteposte=(req,res)=>{
     var delsql = 'DELETE FROM posts WHERE id = ?'
     var params = {id:req.body.id}
@@ -129,4 +128,26 @@ var getcommit = (req,res)=>{
         }
     })
 }
-module.exports ={register,login,post,commits,deleteposte,searchName,searchget,updateAccunt,getcommit} 
+
+var commits = (req,res)=>{
+    var commsql = 'INSERT INTO comments SET ? '
+    var params = {
+        des :req.body.des,
+        post :req.body.post,
+        user_id : req.body.userid
+    }
+    db.query(commsql, params,(err,result)=>{
+        if(err){
+            console.log(err)
+        }else{
+            console.log(result)
+        }
+    })
+}
+module.exports ={
+    register,login,
+    post,commits,
+    deleteposte,searchName
+    ,searchget,updateAccunt,
+    getcommit,postget
+} 
