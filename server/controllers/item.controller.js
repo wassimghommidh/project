@@ -64,4 +64,69 @@ var commits = (req,res)=>{
         }
     })
 }
-module.exports ={register,login,post,commits} 
+var deleteposte=(req,res)=>{
+    var delsql = 'DELETE FROM posts WHERE id = ?'
+    var params = {id:req.body.id}
+    db.query(delsql,params,(err,result)=>{
+        if(err){
+            console.log(err)
+        }else {
+            console.log(result)
+        }
+    })
+    var deletcommits = 'DELETE FROM comments WHERE post_id = ?'
+    db.query(deletcommits,params,(err,result)=>{
+        if(err){
+            console.log(err)
+        }else{
+            console.log(result)
+        }
+    })
+}
+var searchName = (req,res)=>{
+    var searchName ='SELECT * FROM users WHERE firstname OR lastname =? '
+    db.query(searchName,req.body,(err,result)=>{
+        if(err){
+            console.log(err)
+        }else{
+            console.log(result)
+        }
+    })
+}
+var searchget=(req,res)=>{
+    var searchget = 'SELECT * FROM users WHERE firstname OR lastname =? '
+    db.query(searchget,req.body,(err,result)=>{
+        if(err){
+            console.log(err)
+        }else{
+            console.log(result)
+        }
+    })
+}
+var updateAccunt =async (req, res)=>{
+var salt=await bcrypt.genSalt()
+var pass=await bcrypt.hash(req.body.password,salt)
+    var update ='UPDATE users WHERE id = ?'
+    var params={
+        firstname:req.body.firstname,
+        lastname:req.body.lastname,
+        email:req.body.email,
+        phonenumber:req.body.phonenumber,
+        password:pass
+    };
+    db.query(update,params,(err,result)=>{
+        if(err) console.log(err);
+        console.log(result)
+    })  
+}
+var getcommit = (req,res)=>{
+    var getcommit ='SELECT * FROM comments WHERE userid = ?'
+    db.query(getcommit,req.body,(err,result)=>{
+        if(err){
+            console.log(err)
+        }else{
+            console.log(result)
+        }
+    })
+}
+module.exports ={register,login,post,commits,deleteposte,searchName,searchget,updateAccunt,getcommit} 
