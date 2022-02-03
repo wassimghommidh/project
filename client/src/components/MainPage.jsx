@@ -1,6 +1,5 @@
 import React,{useState,useEffect} from "react";
-
-// import "regenerator-runtime/runtime"
+import Nav from "./Nav.jsx";
 // import axios from "axios";
 const MainPage=(props)=> {
 //   const [posts,setPosts] =useState([])
@@ -11,7 +10,7 @@ const MainPage=(props)=> {
 //   })
 return (
     <div>
-        <h1>nav</h1>
+        <Nav/>
         <h1>postes</h1>
     </div>
 );  

@@ -1,11 +1,11 @@
 import React from "react";
-
+import {Link} from 'react-router-dom'
 const Account = (props) => (
   <div id="color">
     <div className="container">
       <h1 id="name">Profile name </h1>
       <button id="editprofile">Edit profile</button>
-      <button id="title">Title</button>
+      <Link to='/MainPage' ><li>HomePage</li></Link> 
     </div>
     <div className="container1">
       <h3 className="name1">200 posts</h3>

@@ -15,9 +15,9 @@ body{
 }
 
 
-/* .nav-bar{
+.nav-bar{
 background-color:darkcyan ;
-/* width: 200px;
+width: 200px;
 height: 80px;
 font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 display: flex;
@@ -179,7 +179,7 @@ margin-top: 20px;
     top: -36px;
     cursor: pointer ;
     border-radius: 50%;
-} */
+}
 
 #color {
   background-color: lightseagreen;
@@ -261,7 +261,7 @@ body {
 .container2 {
   display: flex;
   justify-content: center;
-  /* margin-left: -20px;  */
+ margin-left: -20px; 
   background-color: lightyellow;
 }
 
