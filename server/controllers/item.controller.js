@@ -62,6 +62,18 @@ var postget = (req,res) =>{
         }
     })
 }
+var postgetwithid = (req,res) =>{
+    console.log(req.body);
+    var postgetidsql = 'SELECT * FROM posts WHERE user_id= ? '
+    db.query(postgetidsql,(err,result)=>{
+        if(err) {
+            console.log(err)
+        }else{
+            console.log(result)
+            res.send(result)
+        }
+    })
+}
 
 var deleteposte=(req,res)=>{
     var delsql = 'DELETE FROM posts WHERE id = ?'
@@ -102,17 +114,11 @@ var searchget=(req,res)=>{
         }
     })
 }
-var updateAccunt =async (req, res)=>{
+var updateAccunt =async (req, res)=>{ 
 var salt=await bcrypt.genSalt()
 var pass=await bcrypt.hash(req.body.password,salt)
-    var update ='UPDATE users WHERE id = ?'
-    var params={
-        firstname:req.body.firstname,
-        lastname:req.body.lastname,
-        email:req.body.email,
-        phonenumber:req.body.phonenumber,
-        password:pass
-    };
+    var update =`UPDATE users SET firstname = ?, lastname = ?, email = ?, phonenumber = ?, password= ? WHERE id = ?`
+    var params= [req.body.firstname,req.body.lastname,req.body.email,req.body.phonenumber,pass,req.body.id]
     db.query(update,params,(err,result)=>{
         if(err) console.log(err);
         console.log(result)
@@ -149,5 +155,6 @@ module.exports ={
     post,commits,
     deleteposte,searchName
     ,searchget,updateAccunt,
-    getcommit,postget
+    getcommit,postget,
+    postgetwithid
 } 

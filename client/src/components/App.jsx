@@ -6,6 +6,7 @@ import PostNew from "./PostNew.jsx";
 import Home from "./Home.jsx";
 import MainPage from './MainPage.jsx'
 import Account from './Account.jsx';
+import Editprofile from "./Editprofile.jsx";
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom'
 class App extends React.Component {
   constructor(props) {
@@ -34,7 +35,8 @@ class App extends React.Component {
         <Route path="/PostNew" element={<PostNew data={this.state.userinfo.id}/>}/> 
         <Route path="/LogIn" element={<LogIn connect={this.connect.bind(this)} />}/> 
         <Route path="/MainPage" element={<MainPage />}/>
-        <Route path="/account" element={<Account />}/>
+        <Route path="/account" element={<Account data={this.state.userinfo}/>}/>
+        <Route path="/Editprofile" element={<Editprofile data={this.state.userinfo.id}/>}/>
       </Routes> 
      </Router> 
     );

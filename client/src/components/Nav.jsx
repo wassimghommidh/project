@@ -5,10 +5,9 @@ import {Link} from 'react-router-dom'
 // import style from "../../public/style.css" 
  function Nav() {
   return (
-  
   <div className='nav-bar'>
     <div className ='left-side'> 
-       <Link to='/MainPage' ><li>HomePage</li></Link> 
+       <Link to='/MainPage' ><li id='HomePage'>HomePage</li></Link> 
     </div>
        <div className ='middle-side'>
      <Search/>      
@@ -19,8 +18,7 @@ import {Link} from 'react-router-dom'
          <div className ='right-side'>
          <Link to='/account' ><li>account</li></Link>
          </div>
-      </div>
-       
+      </div> 
   )
 }
 
