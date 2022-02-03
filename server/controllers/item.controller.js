@@ -28,7 +28,7 @@ var login=(req,res)=>{
               bcrypt.compare(password,elem.password)
               .then((result)=>{
                   if(result===true){ 
-                   res.json({redirct:"/",userinfo:elem})
+                   res.json({redirct:"/MainPage",userinfo:elem})
                   }
                 })
               .catch((err)=>{console.log(err);})

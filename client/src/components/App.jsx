@@ -9,8 +9,9 @@ import {BrowserRouter as Router,Routes,Route} from 'react-router-dom'
 class App extends React.Component {
   constructor(props) {
     super(props);
-    his.state = {
-      userinfo:{}
+    this.state = {
+      userinfo:{},
+      redirect:'/'
     }
   }
     connect (emailLog,passwordLog)  {
@@ -21,7 +22,7 @@ class App extends React.Component {
       .then((result)=>{
         console.log(result);
         this.setState({userinfo:result.data.userinfo,redirect:result.data.redirect})
-      });
+      }); 
   };
   render() {
     return (
@@ -31,7 +32,7 @@ class App extends React.Component {
         <Route path="/register" element={<Register/>}/> 
         <Route path="/PostNew" element={<PostNew data={this.state.userinfo.id}/>}/> 
         <Route path="/LogIn" element={<LogIn connect={this.connect.bind(this)} />}/> 
-        <Route path="/MainPage" element={<MainPage/>}/> 
+        <Route path="/MainPage" element={<MainPage />}/>
       </Routes> 
      </Router> 
     );
