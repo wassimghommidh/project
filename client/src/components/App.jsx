@@ -5,12 +5,16 @@ import axios from 'axios';
 import PostNew from "./PostNew.jsx";
 import Home from "./Home.jsx";
 import MainPage from './MainPage.jsx'
+import Account from './Account.jsx';
+import Editprofile from "./Editprofile.jsx";
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom'
+import Search from "./Search.jsx";
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userinfo:{}
+      userinfo:{},
+      redirect:'/'
     }
   }
     connect (emailLog,passwordLog)  {
@@ -21,7 +25,7 @@ class App extends React.Component {
       .then((result)=>{
         console.log(result);
         this.setState({userinfo:result.data.userinfo,redirect:result.data.redirect})
-      });
+      }); 
   };
   render() {
     return (
@@ -31,9 +35,12 @@ class App extends React.Component {
         <Route path="/register" element={<Register/>}/> 
         <Route path="/PostNew" element={<PostNew data={this.state.userinfo.id}/>}/> 
         <Route path="/LogIn" element={<LogIn connect={this.connect.bind(this)} />}/> 
-        <Route path="/MainPage" element={<MainPage/>}/> 
+        <Route path="/MainPage" element={<MainPage />}/>
+        <Route path="/account" element={<Account data={this.state.userinfo}/>}/>
+        <Route path="/Editprofile" element={<Editprofile data={this.state.userinfo.id}/>}/>
       </Routes> 
      </Router> 
+ 
     );
    }
  }

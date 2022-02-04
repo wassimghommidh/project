@@ -1,23 +1,20 @@
-import React from 'react';
+import React from "react";
 import Search from "./Search.jsx";
-import Upload from "./Upload.jsx";
-import { IoHome } from "react-icons/fa";
-// import style from "../../public/style.css" 
- function Nav() {
+import {Link} from 'react-router-dom'
+
+function Nav() {
   return (
-  
-  <div className='nav-bar'>
-       <div className ='left-side'> 
-       <button id='homePage' type="submit">HomePage</button>
-       </div>
-       <div className ='middle-side'>
-     <Search/>      
-       </div>
-       <div className ='right-side'></div>
-        <Upload/>
-         </div>
-       
-  )
+    <div>
+      <div className="container5">
+        <Search />
+      </div>
+      <div className="container6">
+      <Link to='/PostNew' > <li>PostNew</li></Link>
+        <Link to='/account' ><li>account</li></Link>
+        <Link to='/MainPage' > <li>HomePage</li></Link>
+      </div>
+    </div>
+  );
 }
 
-export default Nav ;
+export default Nav;

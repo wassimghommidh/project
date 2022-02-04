@@ -1,26 +1,28 @@
 import React, {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-const Register = () => {
-
+const Editprofile = (props) => {
+console.log(props.data );
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [phoneNum, setPhoneNum] = useState("");
     const [password, setPassword] = useState("");
 
-    const signing = () => {
-        axios.post('http://localhost:3000/api/register', {
+   function Edit () {
+        axios.put('/api/updateAccunt', {
             firstname:firstName,
             lastname:lastName,
             email:email,
             phonenumber:phoneNum,
-            password:password
+            password:password,
+            id:props.data 
         })
         .then((result)=>{
             console.log(result);
-        });
+        }).catch((err)=>{console.log(err)})
     };
-
+    const navigate = useNavigate()
     return (
         <div className='Registration'>
             <h3>Create a New Account :</h3>
@@ -34,10 +36,13 @@ const Register = () => {
             <input type="number" onChange={(e)=>setPhoneNum(e.target.value)}></input>
             <label>Password</label>
             <input type="password" onChange={(e)=>setPassword(e.target.value)}></input>
-            <button type='submit' onClick={signing}> Register </button>
+            <button type='submit' onClick={()=>{
+                Edit();
+                navigate("/account")}}
+                > done </button>
            
         </div>
     );
 }
 
-export default Register;
+export default Editprofile;
